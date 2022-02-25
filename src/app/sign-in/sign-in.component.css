@@ -26,6 +26,14 @@
   background-color: transparent;
 }
 
+.sign-in-form:focus-within{
+  background: rgb(227, 15, 15);
+  background: -moz-radial-gradient(circle, rgb(227, 15, 15) 0%, rgb(32, 93, 155) 100%);
+  background: -webkit-radial-gradient(circle, rgb(227, 15, 15) 0%, rgb(32, 93, 155) 100%);
+  background: radial-gradient(circle, rgb(227, 15, 15) 0%, rgb(32, 93, 155) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1);
+}
+
 ::placeholder {
   color: whitesmoke;
 }
@@ -34,8 +42,19 @@
   position: absolute;
   bottom: 10%;
   left: 5%;
-
   color: whitesmoke;
-
   font-size: 16px;
+}
+
+#logo_link {
+  position: absolute;
+  bottom: calc(10% - 5px);
+  right: 5%;
+}
+
+#logo_link img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  -webkit-filter: invert();
 }
