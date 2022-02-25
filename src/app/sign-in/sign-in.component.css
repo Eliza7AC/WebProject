@@ -1,0 +1,41 @@
+.sign-in-form {
+  margin: 0 auto;
+  /*height: calc(100vh - 50px);*/
+  height: 100vh;
+  border: solid black;
+
+  text-align: center;
+  background: rgb(161, 8, 8);
+  background: -moz-radial-gradient(circle, rgb(161, 8, 8) 0%, rgb(32, 93, 155) 100%);
+  background: -webkit-radial-gradient(circle, rgb(161, 8, 8) 0%, rgb(32, 93, 155) 100%);
+  background: radial-gradient(circle, rgb(161, 8, 8) 0%, rgb(32, 93, 155) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1);
+}
+
+.sign-in-form input{
+  text-align: center;
+  width: 400px;
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 200px);
+
+  font-size: 50px;
+  font-family: 'Lato', sans-serif;
+  color: whitesmoke;
+  border: none;
+  background-color: transparent;
+}
+
+::placeholder {
+  color: whitesmoke;
+}
+
+#names {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+
+  color: whitesmoke;
+
+  font-size: 16px;
+}
