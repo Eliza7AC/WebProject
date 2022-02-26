@@ -7,9 +7,11 @@ import { ChatComponent } from './chat/chat.component';
 import {RouterModule, Routes} from "@angular/router";
 import { SignInComponent } from './sign-in/sign-in.component';
 import {AuthGuard} from "./services/auth-guard.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./services/auth.service";
 import {LoggedGuardService} from "./services/logged-guard.service";
+import { SquareComponent } from './square/square.component';
+import { BoardComponent } from './board/board.component';
 
 const appRoutes: Routes = [
 
@@ -17,7 +19,7 @@ const appRoutes: Routes = [
   { path:'sign-in', canActivate: [LoggedGuardService], component:SignInComponent },
 
   { path:'home', canActivate: [AuthGuard], component:GameComponent },
-  { path:'game', canActivate: [AuthGuard], component:GameComponent },
+  { path:'game', canActivate: [AuthGuard], component:BoardComponent },
   { path:'chat', canActivate: [AuthGuard], component:ChatComponent },
 
   { path: '**', redirectTo: 'sign-in'}
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     AppComponent,
     GameComponent,
     ChatComponent,
-    SignInComponent
+    SignInComponent,
+    SquareComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

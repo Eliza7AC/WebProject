@@ -31,8 +31,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/app/game/game.js"
+              "src/app/game/game.js",
+              "src/assets/js/gameStroop.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
