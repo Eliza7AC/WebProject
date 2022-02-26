@@ -10,6 +10,7 @@ import {AuthGuard} from "./services/auth-guard.service";
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "./services/auth.service";
 import {LoggedGuardService} from "./services/logged-guard.service";
+import { WebSocketService } from './services/web-socket.service';
 
 const appRoutes: Routes = [
 
@@ -32,10 +33,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     FormsModule
   ],
-  providers: [LoggedGuardService, AuthGuard, AuthService],
+  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,24 @@
+h2 {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 40px;
+}
+
+.chat {
+  margin-top: 2rem;
+}
+
+div.chat-content {
+  border-radius: .25rem;
+  height: 40rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  height: 100%;
+}
+
+.btn {
+  width: 100%;
+  text-align: center;
+}

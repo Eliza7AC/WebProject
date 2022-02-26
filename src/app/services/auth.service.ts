@@ -1,8 +1,8 @@
 export class AuthService {
   isAuth = false;
-  name : String | undefined;
+  name !: string;
 
-  signIn(name : String) {
+  signIn(name : string) {
     this.isAuth = true;
     this.name = name;
   }
