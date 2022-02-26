@@ -8,10 +8,17 @@ h2 {
   margin-top: 2rem;
 }
 
+ul.list-group {
+  position: absolute;
+  min-width: 100%;
+  bottom: 0;
+}
+
 div.chat-content {
   border-radius: .25rem;
-  height: 40rem;
+  height: 36rem;
   margin-bottom: 2rem;
+  overflow-y: hidden;
 }
 
 .card {
