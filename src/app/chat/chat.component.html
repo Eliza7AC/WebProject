@@ -1,1 +1,28 @@
-<p>chat works!</p>
+<h2>Chat</h2>
+<div class="chat">
+  <div class="container">
+    <div class="chat-content">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+            <strong>{{ chatMessage.user }}: </strong>
+            <span>{{ chatMessage.message }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+      <div class="chat-send row">
+        <div class="col-2">
+          <input class="form-control" type="text" style="text-align: center; font-weight: bold;" value="{{ authService.name }}" readonly>
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control" name="message" id="input-message" ngModel>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
