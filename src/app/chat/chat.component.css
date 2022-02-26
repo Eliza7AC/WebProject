@@ -10,7 +10,7 @@ h2 {
 
 ul.list-group {
   position: absolute;
-  min-width: 100%;
+  width: 100%;
   bottom: 0;
 }
 
