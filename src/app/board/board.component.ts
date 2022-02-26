@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
 
 
-  squares: any[];
-  xIsNext: boolean;
-  winner: null;
+  squares?: any[];
+  xIsNext?: boolean;
+  winner?: null;
 
   constructor() {
     // ?
-    this.squares = [];
-    this.xIsNext = true;
-    this.winner = null;
+    // this.squares = [];
+    // this.xIsNext = true;
+    // this.winner = null;
   }
 
   ngOnInit(): void {
@@ -34,7 +34,9 @@ export class BoardComponent implements OnInit {
   }
 
   makeMove(idx: number){
+    // @ts-ignore
     if (!this.squares[idx]){
+      // @ts-ignore
       this.squares.splice(idx, 1, this.player);
       this.xIsNext = !this.xIsNext;
     }
@@ -57,10 +59,14 @@ export class BoardComponent implements OnInit {
     for (let i=0; i< lines.length; i++){
       const[a,b,c] = lines[i]
       if (
+        // @ts-ignore
         this.squares[a] &&
+        // @ts-ignore
         this.squares[a] === this.squares[b] &&
+        // @ts-ignore
         this.squares[a] === this.squares[c]
       ) {
+        // @ts-ignore
         return this.squares[a];
       }
     }

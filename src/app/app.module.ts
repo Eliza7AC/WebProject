@@ -12,6 +12,9 @@ import {AuthService} from "./services/auth.service";
 import {LoggedGuardService} from "./services/logged-guard.service";
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 const appRoutes: Routes = [
 
@@ -37,7 +40,11 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbLayoutModule,
+    NbEvaIconsModule
   ],
   providers: [LoggedGuardService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
