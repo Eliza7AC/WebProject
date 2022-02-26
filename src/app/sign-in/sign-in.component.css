@@ -57,4 +57,10 @@
   width: 100px;
   object-fit: contain;
   -webkit-filter: invert();
+
+  transition: transform 0.2s ease-in;
+}
+
+#logo_link img:hover {
+  transform: scale(1.10);
 }
