@@ -1,10 +1,10 @@
-<nb-layout>
+<!--<nb-layout>-->
 
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
-  </nb-layout-header>
+<!--  <nb-layout-header fixed>-->
+<!--  &lt;!&ndash; Insert header here &ndash;&gt;-->
+<!--  </nb-layout-header>-->
 
-  <nb-layout-column>
+<!--  <nb-layout-column>-->
     <nav *ngIf="authService.isAuth" class="navbar sticky-top navbar-expand-md navbar-dark bg-black" style="height: 50px">
       <div class="container-fluid">
         <div class="navbar-nav">
@@ -15,15 +15,15 @@
       <div class="navbar-right">
         <a class="text-white text-decoration-none">Connected as {{ authService.name }}</a>
       </div>
-    
+
     </nav>
-    
+
     <router-outlet></router-outlet>
-    
-  </nb-layout-column>
 
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
+<!--  </nb-layout-column>-->
 
-</nb-layout>
+<!--  <nb-layout-footer fixed>-->
+<!--  &lt;!&ndash; Insert footer here &ndash;&gt;-->
+<!--  </nb-layout-footer>-->
+
+<!--</nb-layout>-->
