@@ -10,6 +10,7 @@ import {AuthGuard} from "./services/auth-guard.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./services/auth.service";
 import {LoggedGuardService} from "./services/logged-guard.service";
+import { WebSocketService } from './services/web-socket.service';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,14 +40,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     FormsModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'cosmic' }),
     NbLayoutModule,
     NbEvaIconsModule
   ],
-  providers: [LoggedGuardService, AuthGuard, AuthService],
+  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

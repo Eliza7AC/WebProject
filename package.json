@@ -1,15 +1,18 @@
 {
-  "name": "untitled13",
+  "name": "webproject",
   "version": "0.0.0",
+  "main": "server/server.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run build && node dist/server.js",
+    "build": "rm -rf dist/app && ng build && babel server/ -d dist",
+    "inspect": "node --inspect dist/server.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
+    "-": "0.0.1",
     "@angular/animations": "~13.1.0",
     "@angular/cdk": "^13.0.0",
     "@angular/common": "~13.1.0",
@@ -23,15 +26,20 @@
     "@nebular/theme": "^9.0.1",
     "bootstrap": "^5.1.3",
     "eva-icons": "^1.1.2",
+    "g": "^2.0.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "ws": "^8.5.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.1.2",
-    "@angular/cli": "~13.1.2",
+    "@angular-devkit/build-angular": "^13.2.5",
+    "@angular/cli": "^13.1.4",
     "@angular/compiler-cli": "~13.1.0",
     "@schematics/angular": "~13.1.2",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
@@ -40,6 +48,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "rimraf": "^3.0.2",
     "typescript": "~4.5.2"
   }
 }
