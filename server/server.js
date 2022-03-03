@@ -1,16 +1,25 @@
 import express from 'express';
 import { Server } from 'ws';
+import messagesRouter from "./services/messages-routage";
+import scoresRouter from "./services/scores-routage";
 
 const app = express();
 const url = require('url');
-app.use(express.static('./dist/app'))
+
+app.use(express.json());
+app.use(express.static('./dist/app'));
+app.use('/messages', messagesRouter);
+app.use('/scores', scoresRouter);
+
 app.get('/', function(req, res) {
   res.sendFile('index.html');
-})
+});
+
 app.get('*', function(req, res) {
   var fullUrl = req.protocol + '://' + req.get('host') + '#' + req.originalUrl;
   res.redirect(fullUrl);
-})
+});
+
 app.listen(4200);
 
 
