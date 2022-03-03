@@ -1,8 +1,14 @@
 .game-frame {
-  position: absolute;
+  position: fixed;
   text-align: center;
-  left: 20%;
+  left: 300px;
+
+  top: 200px;
 
   width: 60%;
   max-width: 60%;
+}
+
+.btn {
+  margin: 10px 50px;
 }

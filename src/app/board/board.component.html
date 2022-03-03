@@ -1,9 +1,9 @@
-<button (click)="toggle()">Tic tac toe</button>
+<button class="btn btn-primary" (click)="toggle()">Tic tac toe</button>
 
 <div class="game-frame" *ngIf="isVisible">
   <h4>Current Player: {{ player }} </h4>
 
-  <button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+  <button class="btn btn-primary" (click)="newGame()">Start new Game</button>
 
   <div class="game-content">
     <app-square

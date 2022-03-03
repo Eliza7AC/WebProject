@@ -1,0 +1,8 @@
+.leadboard-container {
+
+  position: fixed;
+  top: 300px;
+  right: 50px;
+
+  width : 300px;
+}

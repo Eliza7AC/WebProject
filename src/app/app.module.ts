@@ -18,6 +18,7 @@ import {NbThemeModule, NbLayoutModule, NbButtonModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ConnectFourComponent } from './connect-four/connect-four.component';
 import {VisivilityService} from "./services/visivility.service";
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const appRoutes: Routes = [
 
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     SignInComponent,
     SquareComponent,
     BoardComponent,
-    ConnectFourComponent
+    ConnectFourComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
