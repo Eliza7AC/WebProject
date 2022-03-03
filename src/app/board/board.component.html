@@ -1,18 +1,20 @@
-<h1>Current Player: {{ player }} </h1>
+<button (click)="toggle()">Tic tac toe</button>
 
-<button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+<div class="game-frame" *ngIf="isVisible">
+  <h4>Current Player: {{ player }} </h4>
 
+  <button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
 
-<h2 *ngIf="winner">
-  Player {{ winner }} won the game!
-</h2>
+  <div class="game-content">
+    <app-square
+      *ngFor="let val of squares; let i = index"
+      [value]="val"
+      (click)="makeMove(i)">
 
+    </app-square>
+  </div>
 
-<main>
-  <app-square
-    *ngFor="let val of squares; let i = index"
-    [value]="val"
-    (click)="makeMove(i)">
-
-  </app-square>
-</main>
+  <h2 *ngIf="winner">
+    Player {{ winner }} won the game!
+  </h2>
+</div>

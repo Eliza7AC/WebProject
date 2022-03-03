@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {variable} from "@angular/compiler/src/output/output_ast";
 
-import { GameComponent } from './game.component';
+import { ConnectFourComponent } from './connect-four.component';
 
-describe('GameComponent', () => {
-  let component: GameComponent;
-  let fixture: ComponentFixture<GameComponent>;
+describe('ConnectFourComponent', () => {
+  let component: ConnectFourComponent;
+  let fixture: ComponentFixture<ConnectFourComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameComponent ]
+      declarations: [ ConnectFourComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameComponent);
+    fixture = TestBed.createComponent(ConnectFourComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

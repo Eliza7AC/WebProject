@@ -1,0 +1,8 @@
+.game-frame {
+  position: absolute;
+  text-align: center;
+  left: 20%;
+
+  width: 60%;
+  max-width: 60%;
+}

@@ -1,44 +1,6 @@
-<!--<canvas id="myCanvas" width="480" height="480" style="border:solid purple 4px;">-->
-<!--</canvas>-->
+<h2>Games</h2>
 
-<!--<script type="text/javascript" src="src/app/game/game.js"></script>-->
-<!--<script src="../../assets/js/gameStroop.js"></script>-->
-<!--<script src="src/assets/js/gameStroop.js"></script>-->
-
-<!--<p id="scoreResult">Score: 0</p>-->
-
-<style>
-  p, h6 {
-    width: 600px;
-    margin: auto;
-    margin-top: 50px;
-    font-size: 2em;
-    text-align: center;
-  }
-</style>
-
-
-<h6>Quelle est cette couleur ?</h6>
-
-
-<p [ngStyle]="{ 'color': colors_visual[get_color_visual()] }">{{ colors[get_color_name()] }}</p>
-
-
-<p>
-<span *ngFor="let color of colors; let index = index"
-      [ngStyle]="{ 'color': colors_visual[get_random()] }"
-      (click)="check(color)">
-  {{ color }}
-</span>
-</p>
-
-
-<p>score: {{ score }}</p>
-
-
-
-
-
-
-
-
+<div class="games">
+  <app-board></app-board>
+  <app-connect-four></app-connect-four>
+</div>

@@ -12,8 +12,8 @@ let score = 0
 
 function incrementScore() {
   score += 1;
-  document.getElementById("scoreResult").innerText =
-    "Score: " + score;
+  // document.getElementById("scoreResult").innerText =
+  //   "Score: " + score;
 }
 var cancel = setInterval(incrementScore, 100);
 
@@ -162,4 +162,3 @@ function draw(){
 
 
 var interval = setInterval(draw,10);
-

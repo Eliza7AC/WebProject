@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {VisivilityService} from "../services/visivility.service";
 
 @Component({
   selector: 'app-board',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  isVisible?: boolean;
 
   squares?: any[];
   xIsNext?: boolean;
   winner?: null;
 
-  constructor() {
+  constructor(private visibilityService : VisivilityService) {
     // ?
     // this.squares = [];
     // this.xIsNext = true;
@@ -20,7 +22,16 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isVisible = false;
+    this.visibilityService.add(this);
     this.newGame();
+  }
+
+  toggle(){
+    this.isVisible = !this.isVisible;
+    if(this.isVisible){
+      this.visibilityService.toggleAll(this);
+    }
   }
 
   newGame(){
@@ -34,10 +45,8 @@ export class BoardComponent implements OnInit {
   }
 
   makeMove(idx: number){
-    // @ts-ignore
-    if (!this.squares[idx]){
-      // @ts-ignore
-      this.squares.splice(idx, 1, this.player);
+    if (!this.squares![idx]){
+      this.squares!.splice(idx, 1, this.player);
       this.xIsNext = !this.xIsNext;
     }
 
@@ -59,15 +68,10 @@ export class BoardComponent implements OnInit {
     for (let i=0; i< lines.length; i++){
       const[a,b,c] = lines[i]
       if (
-        // @ts-ignore
-        this.squares[a] &&
-        // @ts-ignore
-        this.squares[a] === this.squares[b] &&
-        // @ts-ignore
-        this.squares[a] === this.squares[c]
+        this.squares![a] && this.squares![a] === this.squares![b] &&
+        this.squares![a] === this.squares![c]
       ) {
-        // @ts-ignore
-        return this.squares[a];
+        return this.squares![a];
       }
     }
     return null;

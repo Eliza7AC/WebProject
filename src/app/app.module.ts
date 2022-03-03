@@ -14,16 +14,18 @@ import { WebSocketService } from './services/web-socket.service';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import {NbThemeModule, NbLayoutModule, NbButtonModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ConnectFourComponent } from './connect-four/connect-four.component';
+import {VisivilityService} from "./services/visivility.service";
 
 const appRoutes: Routes = [
 
   { path: '', pathMatch: 'full', redirectTo: 'sign-in' },
   { path:'sign-in', canActivate: [LoggedGuardService], component:SignInComponent },
 
-  { path:'home', canActivate: [AuthGuard], component:GameComponent },
-  { path:'game', canActivate: [AuthGuard], component:BoardComponent },
+  // { path:'home', canActivate: [AuthGuard], component:GameComponent },
+  { path:'game', canActivate: [AuthGuard], component:GameComponent },
   { path:'chat', canActivate: [AuthGuard], component:ChatComponent },
 
   { path: '**', redirectTo: 'sign-in'}
@@ -36,18 +38,20 @@ const appRoutes: Routes = [
     ChatComponent,
     SignInComponent,
     SquareComponent,
-    BoardComponent
+    BoardComponent,
+    ConnectFourComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     FormsModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbThemeModule.forRoot({name: 'cosmic'}),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbButtonModule
   ],
-  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService],
+  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisivilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
