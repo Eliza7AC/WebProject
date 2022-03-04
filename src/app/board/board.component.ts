@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VisivilityService} from "../services/visivility.service";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-board',
@@ -15,10 +16,6 @@ export class BoardComponent implements OnInit {
   winner?: null;
 
   constructor(private visibilityService : VisivilityService) {
-    // ?
-    // this.squares = [];
-    // this.xIsNext = true;
-    // this.winner = null;
   }
 
   ngOnInit(): void {
@@ -37,7 +34,11 @@ export class BoardComponent implements OnInit {
   newGame(){
     this.squares = Array(9).fill(null);
     this.winner = null;
-    this.xIsNext = true;
+    // this.xIsNext = true;
+    this.xIsNext = (Math.random() < 0.5);
+    if(!this.xIsNext){
+      this.autoMakeMove();
+    }
   }
 
   get player(){
@@ -45,12 +46,40 @@ export class BoardComponent implements OnInit {
   }
 
   makeMove(idx: number){
-    if (!this.squares![idx]){
-      this.squares!.splice(idx, 1, this.player);
-      this.xIsNext = !this.xIsNext;
+    if(this.winner === null){
+      if (!this.squares![idx]){
+        this.squares!.splice(idx, 1, "X");
+        this.xIsNext = false;
+      }
+      this.winner = this.calculateWinner();
+
+      this.autoMakeMove();
     }
 
-    this.winner = this.calculateWinner();
+  }
+
+  delay(timeInMillis: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(() => resolve(), timeInMillis));
+  }
+
+  async autoMakeMove(){
+    if(this.winner === null){
+      await this.delay(200);
+
+      let array = Array();
+      for(let i = 0; i < 9; i++){
+        if(!this.squares![i]){
+          array.push(i);
+        }
+      }
+
+      let index = array[Math.floor(Math.random() * array.length)];
+      this.squares!.splice(index, 1, "O");
+
+      this.xIsNext = true;
+
+      this.winner = this.calculateWinner();
+    }
   }
 
   calculateWinner(){
