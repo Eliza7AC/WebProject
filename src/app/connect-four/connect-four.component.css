@@ -9,6 +9,21 @@
   max-width: 60%;
 }
 
-.btn {
+.btn-primary {
   margin: 10px 50px;
+}
+
+.btn-dark{
+  width: 75px;
+}
+
+table {
+  position : fixed;
+  left : 545px;
+}
+
+.result {
+  position: fixed;
+  top: 500px;
+  left: 100px;
 }

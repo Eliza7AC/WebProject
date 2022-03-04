@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NbThemeModule, NbLayoutModule, NbButtonModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ConnectFourComponent } from './connect-four/connect-four.component';
-import {VisivilityService} from "./services/visivility.service";
+import {VisibilityService} from "./services/visibility.service";
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const appRoutes: Routes = [
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     NbEvaIconsModule,
     NbButtonModule
   ],
-  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisivilityService],
+  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisibilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
