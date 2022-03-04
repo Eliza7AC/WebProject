@@ -4,10 +4,44 @@
     <div class="chat-content">
       <div class="card">
         <ul class="list-group list-group-flush">
+
+          <!-- Test -->
+<!--          <li class="list-group-item">-->
+<!--            <div class="msg-container">-->
+<!--              <div>-->
+<!--                <strong>UserTest: </strong>-->
+<!--                <span>Text</span>-->
+<!--              </div>-->
+
+<!--              <div class="msg-date">03/03 à 15h00</div>-->
+
+<!--            </div>-->
+<!--          </li>-->
+
+<!--          <li class="list-group-item">-->
+<!--            <div class="msg-container">-->
+<!--              <div>-->
+<!--                <strong>UserTest: </strong>-->
+<!--                <span>Bis</span>-->
+<!--              </div>-->
+
+<!--              <div class="msg-date">03/03 à 20h00</div>-->
+
+<!--            </div>-->
+<!--          </li>-->
+
           <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
-            <strong>{{ chatMessage.user }}: </strong>
-            <span>{{ chatMessage.message }}</span>
+            <div class="msg-container">
+              <div>
+                <strong>{{ chatMessage.user }}: </strong>
+                <span>{{ chatMessage.message }}</span>
+              </div>
+
+              <div class="msg-date">{{ chatMessage.date | date:"dd/MM à HH:mm"}}</div>
+
+            </div>
           </li>
+
         </ul>
       </div>
     </div>

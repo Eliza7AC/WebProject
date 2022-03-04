@@ -29,3 +29,11 @@ div.chat-content {
   width: 100%;
   text-align: center;
 }
+
+.msg-container {
+  display: flex;
+}
+
+.msg-date {
+  margin-left: auto;
+}
