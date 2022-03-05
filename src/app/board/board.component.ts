@@ -53,10 +53,11 @@ export class BoardComponent implements OnInit {
       if (!this.squares![idx]){
         this.squares!.splice(idx, 1, "X");
         this.xIsNext = false;
-      }
-      this.winner = this.calculateWinner();
 
-      this.autoMakeMove();
+        this.winner = this.calculateWinner();
+
+        this.autoMakeMove();
+      }
     }
 
   }
