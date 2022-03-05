@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {VisivilityService} from "../services/visivility.service";
-import {delay} from "rxjs";
+import {VisibilityService} from "../services/visibility.service";
+
+function delay(timeInMillis: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(() => resolve(), timeInMillis));
+}
 
 @Component({
   selector: 'app-board',
@@ -15,7 +18,7 @@ export class BoardComponent implements OnInit {
   xIsNext?: boolean;
   winner?: null;
 
-  constructor(private visibilityService : VisivilityService) {
+  constructor(private visibilityService : VisibilityService) {
   }
 
   ngOnInit(): void {
@@ -58,13 +61,9 @@ export class BoardComponent implements OnInit {
 
   }
 
-  delay(timeInMillis: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(() => resolve(), timeInMillis));
-  }
-
   async autoMakeMove(){
     if(this.winner === null){
-      await this.delay(200);
+      await delay(200);
 
       let array = Array();
       for(let i = 0; i < 9; i++){
@@ -105,5 +104,4 @@ export class BoardComponent implements OnInit {
     }
     return null;
   }
-
 }

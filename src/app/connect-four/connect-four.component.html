@@ -1,5 +1,29 @@
 <button class="btn btn-primary" (click)="toggle()">Connect 4</button>
 
 <div class="game-frame" *ngIf="isVisible">
-  <h4>Connect 4 works !</h4>
+  <h4>Connect 4</h4>
+
+  <div class="game-board">
+    <button class="btn btn-primary" (click)="resetBoard()">Reset Board</button>
+
+    <table>
+      <th *ngFor="let _ of counter(COLUMN_COUNT); let i = index">
+        <button class="btn btn-dark" (click)="play(i)" [disabled]="GAME_OVER">{{ i+1 }}</button>
+      </th>
+
+      <tr *ngFor="let row of board.reverse()">
+        <td *ngFor="let cell of row">
+          <div [ngStyle]="{'background-color': colors[cell], 'border': 'solid black',
+          'border-radius': '50px', 'height': '75px', width: '75px'}" title="{{ cell }}"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="result">
+    <h2 *ngIf="WINNER">
+      Player {{ WINNER }} won the game!
+    </h2>
+  </div>
+
 </div>

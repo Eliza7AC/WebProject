@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NbThemeModule, NbLayoutModule, NbButtonModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ConnectFourComponent } from './connect-four/connect-four.component';
-import { VisibilityService } from "./services/visibility.service";
+import {VisibilityService} from "./services/visibility.service";
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HttpService } from "./services/http.service";
 
