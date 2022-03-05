@@ -1,13 +1,25 @@
-<div class="leadboard-container">
-  <strong>Leaderboard :</strong>
+<div class="leaderboard-container">
+<!--  <strong>Leaderboard :</strong>-->
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let score of scoreboard">
-      <p>{{score.username}} : {{score.points}} points</p>
-      <button (click)="onSuppress(score.username)">Supprimer</button>
-      <button (click)="increment(score)">Incrémenter</button>
-    </li>
-  </ul>
-  <button (click)="onTest()"> Test </button>
+<!--  <ul class="list-group">-->
+<!--    <li class="list-group-item" *ngFor="let score of scoreboard">-->
+<!--      <p>{{score.username}} : {{score.points}} points</p>-->
+<!--      <button (click)="onSuppress(score.username)">Supprimer</button>-->
+<!--      <button (click)="increment(score)">Incrémenter</button>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--  <button (click)="onTest()"> Test </button>-->
+  <div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <ol>
+      <li *ngFor="let score of scoreboard">
+        <span>{{score.username}}</span>
+        <button class="btn btn-outline-info hidden-button" (click)="suppressScore(score.username)">Delete</button>
+        <button class="btn btn-outline-info hidden-button" (click)="increment(score)">Increment</button>
+        <span class="points">{{score.points}}</span>
+      </li>
+    </ol>
+    <p href="#" (click)="onTest()"><small>Test : ajouter un score aléatoire</small> </p>
+  </div>
 
 </div>

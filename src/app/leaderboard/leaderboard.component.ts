@@ -46,7 +46,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  // Pour tester
+  // Pour tester : ajoute un score au username et score aléatoires
   onTest() {
     this.http.createScore(new Score(this.makeUsername(10), Math.floor(Math.random() * 20))).subscribe({
       next: response => {
@@ -65,7 +65,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  // Pour tester
+  // Pour tester : génère un username aléatoire
   makeUsername(length: number): string {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -77,16 +77,13 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  // Pour tester
+  // Pour tester : remplace un score par le même avec 1 point de plus
   increment(score: Score): void {
     score.points++;
     this.http.modifyScore(score).subscribe({
       next: response => response,
       error: err => {
         console.log('erreur ', err)
-      },
-      complete: () => {
-        setTimeout(this.ngOnInit, 2000);
       }
     });
   }
