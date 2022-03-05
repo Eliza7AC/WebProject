@@ -14,7 +14,7 @@
     <ol>
       <li *ngFor="let score of scoreboard">
         <span>{{score.username}}</span>
-        <button class="btn btn-outline-info hidden-button" (click)="suppressScore(score.username)">Delete</button>
+        <button class="btn btn-outline-info hidden-button" (click)="onSuppress(score.username)">Delete</button>
         <button class="btn btn-outline-info hidden-button" (click)="increment(score)">Increment</button>
         <span class="points">{{score.points}}</span>
       </li>

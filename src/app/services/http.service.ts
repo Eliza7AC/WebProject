@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Score } from "../models/score.model";
 import { Chat } from "../models/chat.model";
+import { User } from "../models/user.model";
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -66,6 +67,17 @@ export class HttpService {
   public suppChatMessage(id: number): Observable<any> {
     return this.http.delete<any>(this.serverUrl+'messages/'+id, {observe: 'response'});
   }
+
+  public getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.serverUrl+'users') ;
+  }
+
+  public createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.serverUrl+'users', user, this.httpOptions
+    );
+  }
+
+  public suppUser(firstName: string): Observable<any> {
+    return this.http.delete<any>(this.serverUrl+'users/'+firstName, {observe: 'response'});
+  }
 }
-
-
