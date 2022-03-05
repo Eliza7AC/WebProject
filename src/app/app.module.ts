@@ -34,6 +34,7 @@ const appRoutes: Routes = [
   { path:'chat', canActivate: [AuthGuard], component:ChatComponent },
   { path:'leaderboard', canActivate: [AuthGuard], component:LeaderboardComponent},
   { path:'users', canActivate: [AuthGuard], component:UserListComponent },
+  { path: 'new-user', canActivate: [AuthGuard], component: NewUserComponent},
   { path: '**', redirectTo: 'sign-in'}
 ]
 
