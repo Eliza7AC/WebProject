@@ -16,7 +16,7 @@ async function getMessages(req, res) {
 async function create(req, res) {
   res.set('Content-Type', 'application/json');
   try {
-    const messageBool = await messageExists(req.body.messageId);
+    const messageBool = await messageExists(req.body.id);
     if (messageBool) {
       res.send({});
     }
@@ -29,9 +29,9 @@ async function create(req, res) {
   }
 }
 
-async function messageExists(messageId) {
+async function messageExists(id) {
   try {
-    const result = await messagesRep.getUser(messageId);
+    const result = await messagesRep.getMessage(id);
     return result.body.hits.total.value > 0;
   } catch (e) {
     console.log('error getting message', e);

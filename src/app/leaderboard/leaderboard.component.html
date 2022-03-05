@@ -1,9 +1,13 @@
 <div class="leadboard-container">
   <strong>Leaderboard :</strong>
 
-  <div class="list-group">
-    <div class="list-group-item">1. User</div>
-    <div class="list-group-item">2. User</div>
-  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let score of scoreboard">
+      <p>{{score.username}} : {{score.points}} points</p>
+      <button (click)="onSuppress(score.username)">Supprimer</button>
+      <button (click)="increment(score)">Incrémenter</button>
+    </li>
+  </ul>
+  <button (click)="onTest()"> Test </button>
 
 </div>

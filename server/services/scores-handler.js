@@ -16,7 +16,7 @@ async function getScores(req, res) {
 async function create(req, res) {
   res.set('Content-Type', 'application/json');
   try {
-    const scoreBool = await scoreExists(req.body.scoreId);
+    const scoreBool = await scoreExists(req.body.username);
     if (scoreBool) {
       res.send({});
     }
@@ -29,9 +29,9 @@ async function create(req, res) {
   }
 }
 
-async function scoreExists(scoreId) {
+async function scoreExists(username) {
   try {
-    const result = await scoresRep.getUser(scoreId);
+    const result = await scoresRep.getScore(username);
     return result.body.hits.total.value > 0;
   } catch (e) {
     console.log('error getting score', e);
@@ -53,8 +53,25 @@ async function scoreDelete(req, res) {
   }
 }
 
+async function scoreUpdate(req, res) {
+  res.set('Content-Type', 'application/json');
+  try {
+    const scoreBool = await scoreExists(req.body.username);
+    if (!scoreBool) {
+      res.send({});
+    }
+    else {
+      await scoresRep.update(req.body)
+      res.status(200).send(req.body);
+    }
+  } catch (e) {
+    res.status(400).end();
+  }
+}
+
 export default {
   getScores,
   create,
-  scoreDelete
+  scoreDelete,
+  scoreUpdate,
 }

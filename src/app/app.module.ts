@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
@@ -19,6 +20,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ConnectFourComponent } from './connect-four/connect-four.component';
 import {VisibilityService} from "./services/visibility.service";
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { HttpService } from "./services/http.service";
 
 const appRoutes: Routes = [
 
@@ -51,9 +53,10 @@ const appRoutes: Routes = [
     NbThemeModule.forRoot({name: 'cosmic'}),
     NbLayoutModule,
     NbEvaIconsModule,
-    NbButtonModule
+    NbButtonModule,
+    HttpClientModule,
   ],
-  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisibilityService],
+  providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisibilityService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,13 +23,13 @@ const store = message => esClient.index({
   handleElasticsearchError(error);
 });
 
-const getMessage = messageId => esClient.search({
+const getMessage = id => esClient.search({
   index,
   body: {
     "query": {
       "match": {
-        "messageId":{
-          "query": messageId
+        "id":{
+          "query": id
         }
       }
     }
@@ -38,14 +38,14 @@ const getMessage = messageId => esClient.search({
   handleElasticsearchError(error);
 });
 
-const remove = messageId => esClient.deleteByQuery({
+const remove = id => esClient.deleteByQuery({
   index,
   refresh: 'true',
   body: {
     "query": {
       "match": {
-        "messageId": {
-          "query": messageId
+        "id": {
+          "query": id
         }
       }
     }

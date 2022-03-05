@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Score } from "../models/score.model";
-import { Message } from "../models/message.model";
+import { Chat } from "../models/chat.model";
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -16,49 +16,34 @@ export class HttpService {
 
   constructor (private http: HttpClient) { }
 
-  public getNewScoreId(): number {
-    let result = Math.floor(Math.random() * 5000);
-    this.getScores().subscribe(
-      (scores: Score[]) => {
-        if (scores.length === 5000) {
-          result = -1;
-        }
-        let existingIds = []
-        for (let score of scores) {
-           existingIds.push(score.scoreId)
-        }
-        while (existingIds.includes(result)) {
-          result = Math.floor(Math.random() * 5000);
-        }
-      }
-    )
-    return result;
-  }
-
   public getScores(): Observable<Score[]> {
-    return this.http.get<Score[]>(this.serverUrl+'scores') ;
+    return this.http.get<Score[]>(this.serverUrl+'scores');
   }
 
   public createScore(score: Score): Observable<Score> {
-    score.scoreId = this.getNewScoreId();
     return this.http.post<Score>(this.serverUrl+'scores', score, this.httpOptions
     );
   }
 
-  public suppScore(id: number): Observable<any> {
-    return this.http.delete<any>(this.serverUrl+'scores/'+id, {observe: 'response'});
+  public modifyScore(score: Score): Observable<Score> {
+    return this.http.put<Score>(this.serverUrl+'scores', score, this.httpOptions
+    );
+  }
+
+  public suppScore(username: string): Observable<any> {
+    return this.http.delete<any>(this.serverUrl+'scores/'+username, {observe: 'response'});
   }
 
   public getNewMessageId(): number {
     let result = Math.floor(Math.random() * 5000);
-    this.getMessages().subscribe(
-      (messages: Message[]) => {
+    this.getChatMessages().subscribe(
+      (messages: Chat[]) => {
         if (messages.length === 5000) {
           result = -1;
         }
         let existingIds = []
         for (let message of messages) {
-          existingIds.push(message.messageId)
+          existingIds.push(message.id)
         }
         while (existingIds.includes(result)) {
           result = Math.floor(Math.random() * 5000);
@@ -68,17 +53,17 @@ export class HttpService {
     return result;
   }
 
-  public getMessages(): Observable<Message[]> {
-    return this.http.get<Message[]>(this.serverUrl+'messages') ;
+  public getChatMessages(): Observable<Chat[]> {
+    return this.http.get<Chat[]>(this.serverUrl+'messages') ;
   }
 
-  public createMessage(message: Message): Observable<Message> {
-    message.messageId = this.getNewScoreId();
-    return this.http.post<Message>(this.serverUrl+'messages', message, this.httpOptions
+  public createChatMessage(message: Chat): Observable<Chat> {
+    message.id = this.getNewMessageId();
+    return this.http.post<Chat>(this.serverUrl+'messages', message, this.httpOptions
     );
   }
 
-  public suppMessage(id: number): Observable<any> {
+  public suppChatMessage(id: number): Observable<any> {
     return this.http.delete<any>(this.serverUrl+'messages/'+id, {observe: 'response'});
   }
 }

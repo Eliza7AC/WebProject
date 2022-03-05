@@ -23,13 +23,13 @@ const store = score => esClient.index({
   handleElasticsearchError(error);
 });
 
-const getScore = scoreId => esClient.search({
+const getScore = username => esClient.search({
   index,
   body: {
     "query": {
       "match": {
-        "scoreId":{
-          "query": scoreId
+        "username":{
+          "query": username
         }
       }
     }
@@ -38,14 +38,14 @@ const getScore = scoreId => esClient.search({
   handleElasticsearchError(error);
 });
 
-const remove = scoreId => esClient.deleteByQuery({
+const remove = username => esClient.deleteByQuery({
   index,
   refresh: 'true',
   body: {
     "query": {
       "match": {
-        "scoreId": {
-          "query": scoreId
+        "username": {
+          "query": username
         }
       }
     }
@@ -54,9 +54,33 @@ const remove = scoreId => esClient.deleteByQuery({
   handleElasticsearchError(error);
 });
 
+const update = score => esClient.search({
+  index,
+  body: {
+    "query": {
+      "match": {
+        "username":{
+          "query": score.username
+        }
+      }
+    }
+  },
+}).then(response => {
+  const id = response.body.hits.hits[0]._id;
+  esClient.index({
+    index,
+    refresh: 'true',
+    id: id,
+    body: score,
+})
+}).catch((error) => {
+  handleElasticsearchError(error);
+});
+
 export default {
   getScore,
   getAll,
   store,
   remove,
+  update
 };
