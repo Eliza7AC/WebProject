@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   // { path:'home', canActivate: [AuthGuard], component:GameComponent },
   { path:'game', canActivate: [AuthGuard], component:GameComponent },
   { path:'chat', canActivate: [AuthGuard], component:ChatComponent },
-
+  { path:'leaderboard', canActivate: [AuthGuard], component:LeaderboardComponent},
   { path: '**', redirectTo: 'sign-in'}
 ]
 
