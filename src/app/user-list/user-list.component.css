@@ -1,0 +1,27 @@
+.title-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-top: 3rem;
+}
+
+.title-wrapper h2 {
+  font-size: 40px;
+}
+
+.title-wrapper .new-user-button {
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right:5rem;
+}
+
+.list-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.new-user-button {
+  width: auto;
+}

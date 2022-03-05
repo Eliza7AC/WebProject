@@ -1,0 +1,23 @@
+<div class="title-wrapper">
+  <h2>Users</h2>
+  <a class="btn btn-primary new-user-button" routerLink="/new-user">New User</a>
+</div>
+
+<div class="list-wrapper">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of users">
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.email }}</p>
+      <p>Inscrit depuis le {{user.creationDate | date: 'dd MMMM YYYY'}}</p>
+      <div *ngIf="user.favoriteGames && user.favoriteGames.length > 0">
+        <p>Jeux préférés :</p>
+        <ul>
+          <li *ngFor="let game of user.favoriteGames"> {{ game }}</li>
+        </ul>
+      </div>
+      <button class="btn btn-sm btn-danger"
+              (click)="onSuppress(user.name)">Supprimer</button>
+    </li>
+  </ul>
+</div>
+
