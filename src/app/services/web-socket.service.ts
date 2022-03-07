@@ -25,12 +25,16 @@ export class WebSocketService {
       console.log('Open: ', event);
     };
     this.webSocket.onmessage = (event) => {
-      const reader = new FileReader();
-      reader.readAsText(event.data);
-      event.data.text().then((resolve: string, reject: any) => {
-        const chatMessage = resolve;
-        this.chatMessages.push(JSON.parse(chatMessage));
-      })
+      if (event.data instanceof Blob) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          let content = reader.result;
+          if (content !== null && !(content instanceof ArrayBuffer)) {
+            this.chatMessages.push(JSON.parse(content))
+          }
+        }
+        reader.readAsText(event.data);
+      }
     };
 
     this.webSocket.onclose = (event) => {

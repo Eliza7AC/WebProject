@@ -22,7 +22,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
         this.scoreboard = scores;
       },
       error: err => {
-        console.log('erreur ', err)
+        console.log('error ', err)
       },
       complete: () => {
         this.scoreboard.sort((a, b) => (a.points < b.points)? 1 : -1);
@@ -31,7 +31,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
   }
 
   onSuppress(username: string) {
-    if (confirm('Voulez-vous vraiment supprimer le score de ' + username + ' ?')) {
+    if (confirm('Are you sure you want to delete ' + username + ' score?')) {
       this.suppressScore(username);
     }
   }
@@ -41,7 +41,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
       if (result.status === 200) {
         this.ngOnInit();
       } else {
-        alert('Ce score n\'existe pas !');
+        alert('This score doesn\'t exist!');
       }
     })
   }
@@ -57,7 +57,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
         }
       },
       error: err => {
-        console.log('erreur ', err)
+        console.log('error ', err)
       },
       complete: () => {
         this.ngOnInit();
@@ -83,7 +83,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
     this.http.modifyScore(score).subscribe({
       next: response => response,
       error: err => {
-        console.log('erreur ', err)
+        console.log('error ', err)
       }
     });
   }

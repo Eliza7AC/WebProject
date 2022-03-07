@@ -21,6 +21,8 @@ import { ConnectFourComponent } from './connect-four/connect-four.component';
 import {VisibilityService} from "./services/visibility.service";
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HttpService } from "./services/http.service";
+import { UserListComponent } from './user-list/user-list.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes: Routes = [
 
@@ -31,6 +33,8 @@ const appRoutes: Routes = [
   { path:'game', canActivate: [AuthGuard], component:GameComponent },
   { path:'chat', canActivate: [AuthGuard], component:ChatComponent },
   { path:'leaderboard', canActivate: [AuthGuard], component:LeaderboardComponent},
+  { path:'users', canActivate: [AuthGuard], component:UserListComponent },
+  { path: 'new-user', canActivate: [AuthGuard], component: NewUserComponent},
   { path: '**', redirectTo: 'sign-in'}
 ]
 
@@ -43,19 +47,22 @@ const appRoutes: Routes = [
     SquareComponent,
     BoardComponent,
     ConnectFourComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    UserListComponent,
+    NewUserComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
-    FormsModule,
-    BrowserAnimationsModule,
-    NbThemeModule.forRoot({name: 'cosmic'}),
-    NbLayoutModule,
-    NbEvaIconsModule,
-    NbButtonModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes, {useHash: true}),
+        FormsModule,
+        BrowserAnimationsModule,
+        NbThemeModule.forRoot({name: 'cosmic'}),
+        NbLayoutModule,
+        NbEvaIconsModule,
+        NbButtonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
   providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisibilityService, HttpService],
   bootstrap: [AppComponent]
 })

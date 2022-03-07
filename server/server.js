@@ -2,6 +2,7 @@ import express from 'express';
 import { Server } from 'ws';
 import messagesRouter from "./services/messages-routage";
 import scoresRouter from "./services/scores-routage";
+import usersRouter from "./services/users-routage";
 
 const app = express();
 const url = require('url');
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(express.static('./dist/app'));
 app.use('/messages', messagesRouter);
 app.use('/scores', scoresRouter);
+app.use('/users', usersRouter);
 
 app.get('/', function(req, res) {
   res.sendFile('index.html');
