@@ -15,8 +15,13 @@
   </div>
 
   <div class="result">
-    <h2 *ngIf="winner">
-      Player {{ winner }} won the game!
+    <h2 *ngIf="winner == 'O'">
+      The AI won the game!
+    </h2>
+    <h2 *ngIf="winner == 'X'">
+      {{auth.name}} won the game!
+      <button class="btn btn-success" [disabled]="gainButtonClicked" (click)="addScore(auth.name);
+         gainButtonClicked = true">Gain 1 point</button>
     </h2>
   </div>
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {VisibilityService} from "../services/visibility.service";
+import {AuthService} from "../services/auth.service";
+import { HttpService } from "../services/http.service";
+import { Score } from "../models/score.model";
+import {mergeMap} from "rxjs";
 
 function delay(timeInMillis: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), timeInMillis));
@@ -16,9 +20,10 @@ export class BoardComponent implements OnInit {
 
   squares?: any[];
   xIsNext?: boolean;
-  winner?: null;
+  winner?: string;
+  gainButtonClicked: boolean = false;
 
-  constructor(private visibilityService : VisibilityService) {
+  constructor(private visibilityService : VisibilityService, public auth: AuthService, private http: HttpService) {
   }
 
   ngOnInit(): void {
@@ -35,8 +40,9 @@ export class BoardComponent implements OnInit {
   }
 
   newGame(){
-    this.squares = Array(9).fill(null);
-    this.winner = null;
+    this.squares = Array(9).fill(undefined);
+    this.winner = undefined;
+    this.gainButtonClicked = false;
     // this.xIsNext = true;
     this.xIsNext = (Math.random() < 0.5);
     if(!this.xIsNext){
@@ -49,7 +55,7 @@ export class BoardComponent implements OnInit {
   }
 
   makeMove(idx: number){
-    if(this.winner === null){
+    if(this.winner === undefined){
       if (!this.squares![idx]){
         this.squares!.splice(idx, 1, "X");
         this.xIsNext = false;
@@ -62,7 +68,7 @@ export class BoardComponent implements OnInit {
   }
 
   async autoMakeMove(){
-    if(this.winner === null){
+    if(this.winner === undefined){
       await delay(200);
 
       let array = Array();
@@ -102,6 +108,25 @@ export class BoardComponent implements OnInit {
         return this.squares![a];
       }
     }
-    return null;
+    return undefined;
+  }
+  addScore(name: string) {
+    this.http.getScores().pipe(
+      mergeMap((result) => {
+       let s = 0;
+       for (let score of result) {
+         if (score.username == this.auth.name) {
+           s = score.points;
+         }
+       }
+       s++;
+       return this.http.modifyScore(new Score(this.auth.name, s));
+      })
+    ).subscribe({
+      next: result => { return true },
+      error: err => {
+        console.log(err);
+      }
+    })
   }
 }

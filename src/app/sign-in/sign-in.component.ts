@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import { HttpService } from "../services/http.service";
+import {Score} from "../models/score.model";
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +12,7 @@ import {AuthService} from "../services/auth.service";
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private router : Router, private authService : AuthService) { }
+  constructor(private router : Router, private authService : AuthService, private http: HttpService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +22,14 @@ export class SignInComponent implements OnInit {
 
     if(name.length > 2 && name.length < 15){
       this.authService.signIn(name);
-      this.router.navigate(['game']);
+      this.http.createScore(new Score(name, 0)).subscribe( {
+        next : response => {
+          this.router.navigate(['game']);
+        },
+        error: err => {
+          console.log('error ', err)
+        }
+      })
     }
   }
 
