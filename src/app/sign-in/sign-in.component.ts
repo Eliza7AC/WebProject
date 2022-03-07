@@ -33,10 +33,10 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  handleKeyUp(form : NgForm, event: any){
+/*  handleKeyUp(form : NgForm, event: any){
     if(event.keyCode === 13){
       this.onSubmit(form);
     }
-  }
+  }*/
 
 }
