@@ -1,1 +1,28 @@
-<p>new-user works!</p>
+<div class="title-wrapper">
+  <h2>Register</h2>
+</div>
+
+<div class="form-card">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-floating">
+      <input type="text" id="name" class="form-control" formControlName="name" placeholder="Mike">
+      <label for="name">Name</label>
+    </div>
+    <div class="form-floating">
+      <input type="email" id="email" class="form-control" formControlName="email" placeholder="example@example.com">
+      <label for="email">E-mail address</label>
+    </div>
+    <div class="favorite-games" formArrayName="favoriteGames">
+      <p>Your favorites games :</p>
+      <div class="form-group" *ngFor="let favoriteGameControl of getFavoriteGames().controls;
+    let i = index">
+        <input type="text" class="form-control game-input" [formControlName]="i">
+      </div>
+      <button type="button" class="btn btn-success add-game-button" (click)="onAddFavoriteGame()">
+        Add a game</button>
+      <button type="submit" class="btn btn-primary validate-button" [disabled]="userForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
+
+

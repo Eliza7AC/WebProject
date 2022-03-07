@@ -51,17 +51,18 @@ const appRoutes: Routes = [
     UserListComponent,
     NewUserComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
-    FormsModule,
-    BrowserAnimationsModule,
-    NbThemeModule.forRoot({name: 'cosmic'}),
-    NbLayoutModule,
-    NbEvaIconsModule,
-    NbButtonModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes, {useHash: true}),
+        FormsModule,
+        BrowserAnimationsModule,
+        NbThemeModule.forRoot({name: 'cosmic'}),
+        NbLayoutModule,
+        NbEvaIconsModule,
+        NbButtonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
   providers: [LoggedGuardService, AuthGuard, AuthService, WebSocketService, VisibilityService, HttpService],
   bootstrap: [AppComponent]
 })

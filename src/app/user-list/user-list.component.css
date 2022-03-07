@@ -1,9 +1,14 @@
+.list-group-item {
+  margin-top: 3rem;
+}
+
 .title-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
   align-items:center;
   margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 .title-wrapper h2 {
@@ -19,9 +24,33 @@
 
 .list-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+}
+
+.user-card {
+  background-color: rgb(250,250,250);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 3rem;
+  width: 300px;
+  padding: 1rem;
+  position: relative;
 }
 
 .new-user-button {
   width: auto;
+}
+
+.bottom-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.favorite-games {
+  margin-bottom: 30px;
+}
+
+.space {
+  margin-bottom: 30px;
 }
